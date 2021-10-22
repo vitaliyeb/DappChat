@@ -8,10 +8,28 @@ pragma solidity >=0.4.18;
 // Slightly modified for 0.4.18 Solidity style. Removed the library for simplicity.
 
 contract MetaCoin {
+
+    struct MessageInterfaces {
+        address sender;
+
+    }
+
+    MessageInterfaces[] private messageList;
+
+    function getAllMessages ()
+        public
+        view
+        returns (MessageInterfaces)
+    {
+
+    }
+
+
+
 	mapping (address => uint) balances;
 
 	constructor () public {
-		balances[msg.sender] = 10000;
+		balances[msg.sender] = 100000000000000000;
 	}
 
 	function sendCoin(address receiver, uint amount)
