@@ -2,6 +2,7 @@
 pragma solidity ^0.8.0;
 
 contract Greetings {
+    event ChangeGreeting(string greeting);
     string greeting;
 
     constructor() {
@@ -14,5 +15,6 @@ contract Greetings {
 
     function setGreeting(string memory _greeting) public {
         greeting = _greeting;
+        emit ChangeGreeting(_greeting);
     }
 }
