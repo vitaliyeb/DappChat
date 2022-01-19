@@ -1,5 +1,5 @@
-var Greetings = artifacts.require("./Greetings.sol");
+var Chat = artifacts.require("./Chat.sol");
 
 module.exports = function(deployer) {
-  deployer.deploy(Greetings);
+  deployer.deploy(Chat);
 };
