@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 contract Chat {
-
+    string public greeting;
     struct Message {
         address owner;
         string value;
@@ -14,10 +14,10 @@ contract Chat {
         return messages;
     }
 
-    function pushMessage(string memory value) external {
+    function pushMessage(string memory _value) external {
         messages.push(Message({
             owner: msg.sender,
-            value: value
+            value: _value
         }));
     }
 }

@@ -20,7 +20,7 @@ const App = () => {
             setWeb3(web3);
             setAccount(account);
             setContract(contract);
-            // console.log(contract)
+            console.log(contract)
             window.w = web3;
             console.log(await contract.methods.getMessages().call());
 
