@@ -3,10 +3,10 @@ import styles from './style.module.css';
 import Messages from "../Messages";
 import ActionsPanel from "../ActionsPanel";
 
-const Chat = () => {
+const Chat = ({ web3State }) => {
     return (<div className={styles.wrapper}>
-        <Messages />
-        <ActionsPanel />
+        <Messages web3State={web3State} />
+        <ActionsPanel web3State={web3State} />
     </div>)
 }
 

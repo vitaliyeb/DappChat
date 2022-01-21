@@ -36,6 +36,7 @@ const App = () => {
                 account: account
             }
         })
+        setIsLoading(false);
     }
 
     useEffect(()=>{
@@ -44,7 +45,7 @@ const App = () => {
 
 
     return (<div>
-        <Chat />
+        { !isLoading &&  <Chat web3State={web3State} /> }
     </div>)
 };
 
