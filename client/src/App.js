@@ -1,15 +1,28 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useReducer, useState} from "react";
 import ChatContract from "./contracts/Chat.json";
+import Web3 from "web3";
 import getWeb3 from "./utils/getWeb3";
 import "./App.css";
-import Web3 from "web3";
+import Chat from "./components/Chat";
+
+const reducer = (state, {type, payload}) => {
+    switch (type){
+        case 'init':
+            return {
+                ...payload
+            }
+        default:
+            return state;
+    }
+}
 
 const App = () => {
     const [isLoading, setIsLoading] = useState(true);
-    const [contract, setContract] = useState(null);
-    const [web3, setWeb3] = useState(null);
-    const [account, setAccount] = useState(null);
-
+    const [web3State, dispatch] = useReducer(reducer, {
+        contract: null,
+        web3: null,
+        account: null
+    });
 
     const init = async () => {
         const web3 = await getWeb3();
@@ -17,9 +30,12 @@ const App = () => {
         const networkId = await web3.eth.net.getId();
         const contract = new web3.eth.Contract(ChatContract.abi, ChatContract.networks[networkId].address);
 
-        setContract(contract);
-        setAccount(account);
-        setWeb3(web3);
+        dispatch({ type: 'init', payload: {
+                contract: contract,
+                web3: web3,
+                account: account
+            }
+        })
     }
 
     useEffect(()=>{
@@ -28,7 +44,7 @@ const App = () => {
 
 
     return (<div>
-
+        <Chat />
     </div>)
 };
 
