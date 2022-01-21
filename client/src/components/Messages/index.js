@@ -7,7 +7,7 @@ const Messages = ({ web3State }) => {
 
     const getMessages = async () => {
         const messages = await contract.methods.getMessages().call();
-        console.log(messages);
+        setMessages(messages);
     }
 
     useEffect(() => {
@@ -15,7 +15,13 @@ const Messages = ({ web3State }) => {
     }, []);
 
     return (<div className={styles.wrapper}>
-        messages
+        <div>
+            {
+                messages.map((message, key) => (<div key={key}>
+                    {message.value}
+                </div>))
+            }
+        </div>
     </div>)
 }
 
