@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import styles from './style.module.css';
 
 const ActionsPanel = ({ web3State }) => {
@@ -6,11 +6,10 @@ const ActionsPanel = ({ web3State }) => {
     const { account, web3, contract } = web3State;
 
     const sendMessage = async () => {
-        const data = await contract.methods.pushMessage(value).send({
+        const response = await contract.methods.pushMessage(value).send({
             from: account
         });
-        console.log(data);
-    }
+    };
 
     return (<div className={styles.wrapper}>
         <div>

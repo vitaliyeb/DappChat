@@ -2,6 +2,8 @@
 pragma solidity ^0.8.0;
 
 contract Chat {
+    event NewMessage(address owner, string value);
+
     struct Message {
         address owner;
         string value;
@@ -9,7 +11,11 @@ contract Chat {
 
     Message[] private _messages;
 
-    function getMessages() external view returns (Message[] memory) {
+    modifier notEmptyMessage(string _value) {
+
+    }
+
+    function getMessages() external view notEmptyMessage returns (Message[] memory) {
         return _messages;
     }
 
@@ -18,5 +24,6 @@ contract Chat {
             owner: msg.sender,
             value: _value
         }));
+        emit NewMessage(msg.sender, _value);
     }
 }
