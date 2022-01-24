@@ -1,12 +1,17 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import styles from './style.module.css';
 
 const Messages = ({ web3State }) => {
     let [messages, setMessages] = useState([]);
+    const targetBottomScroll = useRef(null);
     let { account, web3, contract } = web3State;
 
-    const getMessages = async () => setMessages(await contract.methods.getMessages().call());
-    useEffect(() => getMessages(), []);
+    useEffect(() => {
+        (async () => {
+            setMessages(await contract.methods.getMessages().call())
+            targetBottomScroll.current.scrollIntoView();
+        })()
+    }, []);
 
     useEffect(() => {
         const eventEmitter = contract.events.NewMessage().on("data", (event) => {
@@ -23,10 +28,11 @@ const Messages = ({ web3State }) => {
                 messages.map((message, key) => (<p
                     className={[styles.message, isOwner(message) && styles.messageOwner].join(' ')}
                     key={key}
-                >
+                >   <span>{ message.owner }</span>
                     {message.value}
                 </p>))
             }
+            <div ref={targetBottomScroll}/>
         </div>
     </div>)
 }
