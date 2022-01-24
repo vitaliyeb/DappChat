@@ -1,0 +1,37 @@
+.wrapper {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 25px 10px;
+}
+
+.inputWrapper {
+    border-radius: 20px;
+    overflow: hidden;
+    height: 40px;
+    display: flex;
+}
+
+.inputWrapper > * {
+    outline: none;
+    border: none;
+}
+
+.inputWrapper > input {
+    width: 100%;
+    padding: 10px;
+    background-color: #42436a;
+}
+
+.inputWrapper > button {
+    width: 80px;
+    cursor: pointer;
+}
+
+.inputWrapper > button:hover {
+    opacity: .8;
+}
+
+.inputWrapper svg {
+    width: 50px;
+    height: 30px;
+}

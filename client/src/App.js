@@ -2,7 +2,7 @@ import React, {useEffect, useReducer, useState} from "react";
 import ChatContract from "./contracts/Chat.json";
 import Web3 from "web3";
 import getWeb3 from "./utils/getWeb3";
-import "./App.css";
+import styles from "./styles.module.css";
 import Chat from "./components/Chat";
 
 const reducer = (state, {type, payload}) => {
@@ -44,7 +44,7 @@ const App = () => {
     }, []);
 
 
-    return (<div>
+    return (<div className={styles.app}>
         { !isLoading &&  <Chat web3State={web3State} /> }
     </div>)
 };
