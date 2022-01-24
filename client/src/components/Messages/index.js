@@ -15,12 +15,17 @@ const Messages = ({ web3State }) => {
         return () => eventEmitter.unsubscribe();
     })
 
+    const isOwner = ({ owner }) => owner === account;
+
     return (<div className={styles.wrapper}>
-        <div>
+        <div className={styles.messageArea}>
             {
-                messages.map((message, key) => (<div key={key}>
+                messages.map((message, key) => (<p
+                    className={[styles.message, isOwner(message) && styles.messageOwner].join(' ')}
+                    key={key}
+                >
                     {message.value}
-                </div>))
+                </p>))
             }
         </div>
     </div>)

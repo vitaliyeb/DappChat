@@ -1,3 +1,23 @@
 .wrapper{
+    overflow-y: auto;
+    box-sizing: border-box;
+    padding: 10px;
+}
 
+.messageArea {
+    display: grid;
+}
+
+.message {
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px 0;
+    max-width: 400px;
+    margin-right: auto;
+    background-color: #3da345;
+}
+
+.messageOwner {
+    margin-left: auto;
+    margin-right: 0;
 }
