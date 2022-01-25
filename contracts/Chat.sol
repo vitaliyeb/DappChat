@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
-
+//test
 contract Chat {
     event NewMessage(address owner, string value);
 
@@ -11,11 +11,7 @@ contract Chat {
 
     Message[] private _messages;
 
-    modifier notEmptyMessage(string _value) {
-
-    }
-
-    function getMessages() external view notEmptyMessage returns (Message[] memory) {
+    function getMessages() external view returns (Message[] memory) {
         return _messages;
     }
 
